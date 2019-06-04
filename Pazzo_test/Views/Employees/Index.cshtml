@@ -1,0 +1,57 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IEnumerable<Pazzo_test.Models.Employees>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    <div class="col-sm-2">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="col-sm-2">
+        @Html.DisplayNameFor(model => model.BirthDate)
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-sm-2">
+            @Html.DisplayFor(modelItem => item.LastName)
+        </div>
+        <div class="col-sm-2">
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </div>
+        <div class="col-sm-2">
+            @Html.DisplayFor(modelItem => item.Title)
+        </div>
+        <div class="col-sm-2">
+
+            @item.BirthDate.Value.ToString("yyyy/MM/dd")
+            @*@Html.TextBoxFor(modelItem => item.BirthDate, "{0:yyyy/MM/dd}")*@
+        </div>
+        <div class="col-sm-4">
+            @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+        </div>
+    </div>
+}
+@Html.PagedListPager((IPagedList)Model, x => Url.Action("Index", new { page = x }))

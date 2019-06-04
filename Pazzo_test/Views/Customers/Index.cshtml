@@ -9,6 +9,7 @@
 
 <div>
     @{
+        <div id="CustomersList"></div>
         foreach (var item in Model)
         {
             <div class="row">
@@ -18,3 +19,154 @@
         }
     }
 </div>
+
+
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            //funRefreshQuery();
+            //var grid = $('#DeliveryQueryList').data('kendoGrid');
+            //grid.dataSource.page(1);
+            test();
+        });
+
+        //function funRefreshQuery() {
+        //    if ($('#CustomersList').text().length == 0) {
+        //        var grid = $('#CustomersList').kendoGrid({
+        //            groupable: false,
+        //            dataSource: dataSource,
+        //            sortable: true,
+        //            filterable: false,
+        //            resizable: true,
+        //            pageable: {
+        //                refresh: false,
+        //                pageSizes: 10,
+        //                buttonCount: 1,
+        //                messages: {
+        //                    display: "第 {0} 筆 - 第 {1} 筆，合計 {2} 筆",
+        //                    empty: "找不到任何資料",
+        //                    itemsPerPage: "每頁筆數",
+        //                    first: "最前頁",
+        //                    previous: "上一頁",
+        //                    next: "下一頁",
+        //                    last: "最後頁",
+        //                    refresh: "重新整理"
+        //                }
+        //            },
+        //            columns: [
+        //                {
+        //                    field: "CompanyName",
+        //                    template: '#= funGridBindInfo(CustomerID)#',
+        //                    headerTemplate: '<div class="text-center">公司名稱</div>',
+        //                    attributes: { "class": "text-center" },
+        //                    width: "100px"
+        //                },
+        //                {
+        //                    field: "ContactName",
+        //                    headerTemplate: '<div class="text-center">聯繫人姓名</div>',
+        //                    width: "60px",
+        //                    attributes: { "class": "text-center" }
+        //                },
+        //                {
+        //                    field: "Address",
+        //                    headerTemplate: '<div class="text-center">地址</div>',
+        //                    width: "60px",
+        //                    attributes: { "class": "text-center" }
+        //                },
+        //                {
+        //                    field: "City",
+        //                    headerTemplate: '<div class="text-center">城市</div>',
+        //                    width: "80px",
+        //                    attributes: { "class": "text-center" }
+        //                },
+        //                {
+        //                    field: "Country",
+        //                    headerTemplate: '<div class="text-center">國家</div>',
+        //                    width: "80px",
+        //                    attributes: { "class": "text-center" }
+        //                },
+        //                {
+        //                    field: "Phone",
+        //                    headerTemplate: '<div class="text-center">電話</div>',
+        //                    attributes: { "class": "text-center" },
+        //                    width: "100px"
+        //                },
+        //                {
+        //                    hidden: true,
+        //                    field: "CustomerID"
+        //                }
+        //            ],
+        //            dataBinding: function () {
+        //                record = (this.dataSource.page() - 1) * this.dataSource.pageSize();
+        //            }
+        //        }).data("kendoGrid");
+        //        grid.thead.kendoTooltip({
+        //            filter: "th",
+        //            content: function (e) {
+        //                var target = e.target; // element for which the tooltip is shown
+        //                return $(target).text();
+        //            }
+        //        });
+        //    } else {
+        //        var grid = $('#CustomersList').data('kendoGrid');
+        //        grid.dataSource.read();
+        //    }
+        //}
+
+        //var dataSource = new kendo.data.DataSource({
+        //        pageSize: 10,
+        //        transport: {
+        //            read: {
+        //                url: "/api/Customers/getCustomers",
+        //                dataType: "json",
+        //                type: "post"
+        //            },
+        //            parameterMap: function (data, operation) {
+        //                //當如果有parameterMap區段，則transport read所設的data會失效，必須在以下加入內容
+        //                if (operation == "read") {
+        //                    return dsParam();
+        //                }
+        //            }
+        //        },
+        //        schema: {
+        //            type: "json",
+        //            data: "items",
+        //            total: "total",
+        //        },
+        //        change: function (e) {
+        //            var currentPage = this.page();
+        //            var currentPageSize = this._pageSize;
+        //            if (currentPage > 1 && ((currentPage - 1) * currentPageSize >= this.total())) {
+        //                //當目前分頁超過現況，重新計算最近分頁。
+        //                var newPage = parseInt(this.total() / currentPageSize);
+        //                if (this.total() % currentPageSize > 0)
+        //                    newPage = newPage + 1;
+        //                this.page(newPage);
+        //            }
+        //        }
+        //    });
+
+        function funGridBindInfo(CustomerID) {
+            return "<a href='" + "/Customers/Edit?CustomerID=" + CustomerID + "'</a>";
+         }
+        function testApi() {
+            $.ajax({
+                url: "/api/Customers/getCustomers",
+                dataType: "json",
+                type: 'post',
+                contentType: "application/x-www-form-urlencoded",
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                },
+                success: function (response) {
+                    for (var i = 0; i < response.items.length; i++) {
+                        $("#CustomersList").append("<p>" + response.items[i].CompanyName + "</p>");
+                    }
+                    
+                }
+            });
+        }
+    </script>
+}

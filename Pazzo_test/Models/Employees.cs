@@ -26,7 +26,7 @@ namespace Pazzo_test.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Title { get; set; }
-        public string TitleOfCourtesy { get; set; }
+        public string TitleOfCourtesy { get; set; }        
         public Nullable<System.DateTime> BirthDate { get; set; }
         public Nullable<System.DateTime> HireDate { get; set; }
         public string Address { get; set; }
@@ -40,7 +40,8 @@ namespace Pazzo_test.Models
         public string Notes { get; set; }
         public Nullable<int> ReportsTo { get; set; }
         public string PhotoPath { get; set; }
-    
+       
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees1 { get; set; }
         public virtual Employees Employees2 { get; set; }

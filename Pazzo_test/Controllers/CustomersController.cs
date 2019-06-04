@@ -10,11 +10,21 @@ namespace Pazzo_test.Controllers
     public class CustomersController : Controller
     {
         private NorthwindEntities db = new NorthwindEntities();
-
+        //EF 快速開發
         // GET: Customers
         public ActionResult Index()
         {
             var result = db.Customers.ToList();
+
+            //db.SaveChanges();
+            return View(result);
+        }
+
+        public ActionResult Edit()
+        {
+            var result = db.Customers.ToList();
+
+            //db.SaveChanges();
             return View(result);
         }
     }

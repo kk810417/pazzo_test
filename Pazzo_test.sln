@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pazzo_test", "Pazzo_test\Pazzo_test.csproj", "{75D9448A-8D77-4FE9-9C71-C2AEBA26E052}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3FCEDF7B-456F-49CC-9BD5-14CA0E086E84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessLogic", "BussinessLogic\BussinessLogic.csproj", "{C8C1BAB5-6504-44EF-80FD-C658CF68D242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{75D9448A-8D77-4FE9-9C71-C2AEBA26E052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D9448A-8D77-4FE9-9C71-C2AEBA26E052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D9448A-8D77-4FE9-9C71-C2AEBA26E052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FCEDF7B-456F-49CC-9BD5-14CA0E086E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FCEDF7B-456F-49CC-9BD5-14CA0E086E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FCEDF7B-456F-49CC-9BD5-14CA0E086E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FCEDF7B-456F-49CC-9BD5-14CA0E086E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C1BAB5-6504-44EF-80FD-C658CF68D242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C1BAB5-6504-44EF-80FD-C658CF68D242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C1BAB5-6504-44EF-80FD-C658CF68D242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C1BAB5-6504-44EF-80FD-C658CF68D242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
